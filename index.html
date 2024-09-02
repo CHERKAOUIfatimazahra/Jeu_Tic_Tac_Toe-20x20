@@ -19,7 +19,7 @@
               <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="items border hidden" data-id="menu-popover">
-              <button data-id="reset-btn">Reset</button>
+              <button onclick="replay()">Reset</button>
               <button data-id="new-round-btn">New Round</button>
             </div>
           </div>
@@ -33,7 +33,7 @@
         <div class="footer">
           <div class="score" style="background-color: #ff6f61">
             <p>Player 1</p>
-            <span data-id="player1-stats">0 Wins</span>
+            <span id="player1-stats" data-id="player1-stats">0 Wins</span>
           </div>
           <div class="score" style="background-color: #f4b400">
             <p>Ties</p>
@@ -41,7 +41,7 @@
           </div>
           <div class="score" style="background-color: #61dafb">
             <p>Player 2</p>
-            <span data-id="player2-stats">0 Wins</span>
+            <span id="player2-stats" data-id="player2-stats">0 Wins</span>
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@
       <div class="modal hidden">
         <div class="modal-contents">
           <p id="result"></p>
-          <button onclick="replay()">Play again</button>
+          <button onclick="newRound()">Play again</button>
         </div>
       </div>
     </main>
