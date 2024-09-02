@@ -34,22 +34,21 @@ function gameTableClikHundle(event) {
         document.querySelector(".modal").classList.remove("hidden");
       
     // count the nombre of winnig for each player
-    let player1Wins = 0;
-    let player2Wins = 0;
+    let player1Wins = localStorage.getItem("player1Wins") ? parseInt(localStorage.getItem("player1Wins")): 0;
+    let player2Wins = localStorage.getItem("player2Wins") ? parseInt(localStorage.getItem("player2Wins")): 0;
 
     if (player === "X") {
       player1Wins++;
       document.getElementById(
         "player1-stats"
-        ).textContent = `${player1Wins} Wins`;
-        // localstorage
-        // localStorage.setItem("player1Wins", player1Wins);
+      ).textContent = `${player1Wins} Wins`;
+      localStorage.setItem("player1Wins", player1Wins);
     } else {
       player2Wins++;
       document.getElementById(
         "player2-stats"
-        ).textContent = `${player2Wins} Wins`;
-        // localstorage 
+      ).textContent = `${player2Wins} Wins`;
+      localStorage.setItem("player2Wins", player2Wins);
     }
   } else {
       
@@ -138,36 +137,11 @@ function newRound() {
   document.querySelector(".modal").classList.add("hidden");
 
   player = "X";
-  document.getElementById(
-    "player-turn"
-  ).textContent = `Player ${player}, you're up!`;
+  document.getElementById("player-turn").textContent = `Player ${player}, you're up!`;
 
   const squares = document.querySelectorAll(".square");
   squares.forEach((square) => {
     square.textContent = "";
-    square.addEventListener("click", gameTableClikHundle);
-  });
-}
-
-
-function replay() {
-
-  arrayGrid.fill(null);
-  document.getElementById("result").textContent = "";
-
-  document.querySelector(".modal").classList.add("hidden");
-
-  player = "X";
-  document.getElementById(
-    "player-turn"
-  ).textContent = `Player ${player}, you're up!`;
-
-  const squares = document.querySelectorAll(".square");
-  squares.forEach((square) => {
-    square.textContent = "";
-  });
-
-  squares.forEach((square) => {
     square.addEventListener("click", gameTableClikHundle);
   });
 }
