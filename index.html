@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe 20x20</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="game-container">
+        <div class="header">
+          <div class="turn" data-id="turn">
+            <p id="player-turn"></p>
+          </div>
+          <div class="menu">
+            <button class="menu-btn" data-id="menu-btn">
+              Actions
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="items border hidden" data-id="menu-popover">
+              <button data-id="reset-btn">Reset</button>
+              <button data-id="new-round-btn">New Round</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grid Section -->
+        <div class="grid" data-id="grid">
+          <!-- grid squares -->
+        </div>
+
+        <div class="footer">
+          <div class="score" style="background-color: #ff6f61">
+            <p>Player 1</p>
+            <span data-id="player1-stats">0 Wins</span>
+          </div>
+          <div class="score" style="background-color: #f4b400">
+            <p>Ties</p>
+            <span data-id="ties">0</span>
+          </div>
+          <div class="score" style="background-color: #61dafb">
+            <p>Player 2</p>
+            <span data-id="player2-stats">0 Wins</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Section -->
+      <div class="modal hidden">
+        <div class="modal-contents">
+          <p id="result"></p>
+          <button onclick="replay()">Play again</button>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
