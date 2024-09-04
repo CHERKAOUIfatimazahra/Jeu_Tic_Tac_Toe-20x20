@@ -1,5 +1,6 @@
 const tableSize = 3;
 const winner = 3;
+const tour = 3;
 
 // create our grid
 function grid(tableSize) {
@@ -15,7 +16,7 @@ function grid(tableSize) {
   }
 
   contentTable.style.gridTemplateColumns = `repeat(${tableSize}, 1fr)`;
-}
+} 
 
 // add player symbole in table
 let player = "X";
@@ -35,21 +36,42 @@ function gameTableClikHundle(event) {
       
     // count the nombre of winnig for each player
     let player1Wins = localStorage.getItem("player1Wins") ? parseInt(localStorage.getItem("player1Wins")): 0;
-    let player2Wins = localStorage.getItem("player2Wins") ? parseInt(localStorage.getItem("player2Wins")): 0;
+    let player2Wins = localStorage.getItem("player2Wins") ? parseInt(localStorage.getItem("player2Wins")) : 0;
+    let WinsTour = localStorage.getItem("WinsTour") ? parseInt(localStorage.getItem("WinsTour")) : 0;
 
     if (player === "X") {
       player1Wins++;
-      document.getElementById(
-        "player1-stats"
-      ).textContent = `${player1Wins} Wins`;
+      WinsTour++;
+      document.getElementById("player1-stats").textContent = `${player1Wins} Wins`;
       localStorage.setItem("player1Wins", player1Wins);
+      document.getElementById("tour").textContent = `${WinsTour}`;
+      localStorage.setItem("WinsTour", WinsTour);
+
+      if ((WinsTour === tour)) {
+        localStorage.setItem("player1Wins", 0);
+        localStorage.setItem("player2Wins", 0);
+        localStorage.setItem("WinsTour", 0);
+        document.getElementById(
+          "player1-stats"
+        ).textContent = `0 Wins`;
+        document.getElementById(
+          "player2-stats"
+        ).textContent = `0 Wins`;
+        document.getElementById("tour").textContent = `0`;
+        newRound();
+      }
+
     } else {
       player2Wins++;
+      WinsTour++;
       document.getElementById(
         "player2-stats"
       ).textContent = `${player2Wins} Wins`;
       localStorage.setItem("player2Wins", player2Wins);
+      document.getElementById("tour").textContent = `${WinsTour}`;
+      localStorage.setItem("WinsTour", WinsTour);
     }
+
   } else {
       
     // change the player
@@ -79,7 +101,7 @@ function theWinner(index) {
       // console.log(count)
     } else {
       count = 0;
-    }
+    } 
     if (count === winner) {
       return true;
     }
@@ -144,6 +166,7 @@ function newRound() {
     square.textContent = "";
     square.addEventListener("click", gameTableClikHundle);
   });
+
 }
 
 grid(tableSize);
